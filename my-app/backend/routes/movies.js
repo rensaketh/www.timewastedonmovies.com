@@ -9,6 +9,7 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req, res) => {
   const uniqueID = req.body.uniqueID;
+  const genre = req.body.genre;
   const name = req.body.name;
   const duration = Number(req.body.duration);
   const year = Number(req.body.year);
@@ -17,6 +18,7 @@ router.route('/add').post((req, res) => {
   const newMovie = new Movie({
     uniqueID,
     name,
+    genre,
     duration,
     year,
     rating
