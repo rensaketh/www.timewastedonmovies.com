@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-/*
-const Movie = props => (
+
+const Exercise = props => (
   <tr>
     <td>{props.exercise.username}</td>
     <td>{props.exercise.description}</td>
@@ -13,34 +13,41 @@ const Movie = props => (
     </td>
   </tr>
 )
-*/
-export default class MovieList extends Component {
+
+export default class ExercisesList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {movies: []};
+    this.deleteExercise = this.deleteExercise.bind(this)
+
+    this.state = {exercises: []};
   }
-/*
+
   componentDidMount() {
-    axios.get('http://localhost:5000/movies/')
+    axios.get('http://localhost:5000/exercises/')
       .then(response => {
-        this.setState({ movies: response.data })
+        this.setState({ exercises: response.data })
       })
       .catch((error) => {
         console.log(error);
       })
   }
 
-  exerciseList() {
-      console.log(this.props.filters);
-    return this.state.exercises.map(currentexercise => {
-      return <Exercise exercise={currentexercise} key={currentexercise._id}/>;
+  deleteExercise(id) {
+    axios.delete('http://localhost:5000/exercises/'+id)
+      .then(response => { console.log(response.data)});
+
+    this.setState({
+      exercises: this.state.exercises.filter(el => el._id !== id)
     })
   }
-*/
-  MovieList() {
-      console.log(this.props.settings);
+
+  exerciseList() {
+    return this.state.exercises.map(currentexercise => {
+      return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
+    })
   }
+
   render() {
     return (
       <div>
@@ -56,10 +63,7 @@ export default class MovieList extends Component {
             </tr>
           </thead>
           <tbody>
-              {
-                this.MovieList()
-              }
-
+            { this.exerciseList() }
           </tbody>
         </table>
       </div>

@@ -31,32 +31,44 @@ export default class AdvancedFilter extends Component {
         }
 
         //window.location = '/';
-        console.log(movie);
     }
     onChangeGenre(val) {
         this.setState({
             genre: val.target.value
-        })
+        },
+        () => {
+            this.props.callback(this.state.genre,'genre');
+        });
     }
     onChangeDuration(val) {
         this.setState({
             duration: val.target.value
-        })
+        },
+        () => {
+            this.props.callback(this.state.duration,'duration');
+        });
     }
+    //gotta fix graph
     onChangeGraph(val) {
         this.setState({
             graph: val.target.value
-        })
+        });
     }
     onChangeRating(val) {
         this.setState({
             rating: val.target.value
-        })
+        },
+        () => {
+            this.props.callback(this.state.rating,'rating');
+        });
     }
     onChangeYear(val) {
         this.setState({
             year: val.target.value
-        })
+        },
+        () => {
+            this.props.callback(this.state.year,'year');
+        });
     }
     render() {
         return (
