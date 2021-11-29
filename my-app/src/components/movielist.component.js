@@ -1,19 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-/*
-const Movie = props => (
-  <tr>
-    <td>{props.exercise.username}</td>
-    <td>{props.exercise.description}</td>
-    <td>{props.exercise.duration}</td>
-    <td>{props.exercise.date.substring(0,10)}</td>
-    <td>
-      <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
-    </td>
-  </tr>
-)
-*/
+import { MovieItem } from './movieitem.component';
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +26,9 @@ export default class MovieList extends Component {
   }
 */
   MovieList() {
-      console.log(this.props.settings);
+    return this.state.exercises.map(currentexercise => {
+        return <MovieItem exercise={currentexercise} key={currentexercise._id}/>;
+      })
   }
   render() {
     return (

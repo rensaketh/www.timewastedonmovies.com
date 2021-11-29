@@ -23,30 +23,23 @@ export default class AdvancedFilter extends Component {
         val.preventDefault();
 
         const movie = {
-            name: this.props.searched,
             genre: this.state.genre,
             duration: this.state.duration,
             year: this.state.year,
             rating:this.state.rating
         }
-
+        this.props.callback(movie);
         //window.location = '/';
     }
     onChangeGenre(val) {
         this.setState({
             genre: val.target.value
-        },
-        () => {
-            this.props.callback(this.state.genre,'genre');
-        });
+        })
     }
     onChangeDuration(val) {
         this.setState({
             duration: val.target.value
-        },
-        () => {
-            this.props.callback(this.state.duration,'duration');
-        });
+        })
     }
     //gotta fix graph
     onChangeGraph(val) {
@@ -57,18 +50,12 @@ export default class AdvancedFilter extends Component {
     onChangeRating(val) {
         this.setState({
             rating: val.target.value
-        },
-        () => {
-            this.props.callback(this.state.rating,'rating');
-        });
+        })
     }
     onChangeYear(val) {
         this.setState({
             year: val.target.value
-        },
-        () => {
-            this.props.callback(this.state.year,'year');
-        });
+        })
     }
     render() {
         return (

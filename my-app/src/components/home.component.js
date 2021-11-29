@@ -16,22 +16,19 @@ export default class Home extends Component {
     }
 
     titleCallback(val) {
-        console.
         this.setState({title: val});
     }
 
-    filterCallback(val, name) {
-        this.setState({filters: {
-            [name]: val
-        }});
+    filterCallback(val) {
+        this.setState({filters: val});
     }
 
     render() {
         return(
             <div className="container">
                 <Searchbar callback = {this.titleCallback}/>
-                <AdvancedFilter searched={this.state.title} callback={this.filterCallback}/>
-                <MovieList settings= {this.state.filters}/>
+                <AdvancedFilter callback={this.filterCallback}/>
+                <MovieList searched={this.state.title} settings= {this.state.filters}/>
             </div>
         )
     }
