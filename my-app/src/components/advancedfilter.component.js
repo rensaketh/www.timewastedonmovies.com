@@ -6,17 +6,17 @@ export default class AdvancedFilter extends Component {
 
         this.onChangeDuration = this.onChangeDuration.bind(this);
         this.onChangeGenre = this.onChangeGenre.bind(this);
-        this.onChangeGraph = this.onChangeGraph.bind(this);
         this.onChangeRating = this.onChangeRating.bind(this);
         this.onChangeYear = this.onChangeYear.bind(this);
+        this.onChangeLanguage = this.onChangeLanguage.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            graph:null,
             duration:0,
             genre:'',
             rating:0.0,
             year:0,
+            language: ''
         }
     }
     onSubmit(val) {
@@ -36,16 +36,15 @@ export default class AdvancedFilter extends Component {
             genre: val.target.value
         })
     }
+    onChangeLanguage(val) {
+        this.setState({
+            language: val.target.value
+        })
+    }
     onChangeDuration(val) {
         this.setState({
             duration: val.target.value
         })
-    }
-    //gotta fix graph
-    onChangeGraph(val) {
-        this.setState({
-            graph: val.target.value
-        });
     }
     onChangeRating(val) {
         this.setState({
@@ -98,12 +97,12 @@ export default class AdvancedFilter extends Component {
               />
         </div>
         <div className="form-group"> 
-          <label>Description: </label>
+          <label>Language </label>
           <input  type="text"
               required
               className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}
+              value={this.state.language}
+              onChange={this.onChangeLanguage}
               />
         </div>
 
