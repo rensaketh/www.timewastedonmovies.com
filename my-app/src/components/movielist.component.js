@@ -17,20 +17,20 @@ export default class MovieList extends Component {
         console.log(error);
       })
   }
-
-  exerciseList() {
-      console.log(this.props.filters);
-    return this.state.exercises.map(currentexercise => {
-      return <Exercise exercise={currentexercise} key={currentexercise._id}/>;
-    })
-  }
-*/
+  */
   MovieList() {
+      /*
     return this.state.exercises.map(currentexercise => {
         return <MovieItem exercise={currentexercise} key={currentexercise._id}/>;
       })
+      */
+     return "";
   }
   render() {
+      if(this.MovieList() === "") 
+      return (
+          <h1>empty</h1>
+      );
     return (
       <div>
         <h3>Logged Exercises</h3>
